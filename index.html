@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<HTML>
+
+<head>
+    <title>Dyegon Translate</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- <link href ="node_modules/bootstrap/dist/css/" rel="stylesheet" type="text/css" /> -->
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/cerulean/bootstrap.min.css" rel="stylesheet" integrity="sha384-C++cugH8+Uf86JbNOnQoBweHHAe/wVKN/mb0lTybu/NZ9sEYbd+BbbYtNpWYAsNP" crossorigin="anonymous">
+    <!-- <link href ="themes/styles/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />          -->
+
+
+
+
+</head>
+
+<script language="javascript">
+    $(document).ready(function() {
+        var targetDiv = $("#outputText");
+        var input = $("#inputText");
+        var searchRequest = null;
+        var minlength = 0;
+        $("#inputText").keyup(function() {
+            var that = this,
+                value = $(this).val();
+            if (value.length >= minlength) {
+                if (searchRequest != null)
+                    searchRequest.abort();
+                searchRequest = $.ajax({
+                    type: "POST",
+                    url: 'trans_result.php',
+                    data: {
+                        input1: input.val()
+                    },
+                    complete: function(data) {
+                        targetDiv.html('');
+                        targetDiv.append(data.responseText);
+                    }
+                });
+            }
+
+            return false;
+        });
+    });
+</script>
+
+<body style="background-color:#659EC7;">
+    <div class="page-top pt-0" style="width: 100%; height: 20px; background-color:#659EC7"></div>
+    <nav class="navbar navbar-light" style="background-color: #ffffff; text-align: center">
+        <img src="images/logo.png" style="width: 100px; left: 50%; position: relative; transform: translateX(-50%);" alt="">
+    </nav>
+    <!--End of navbar-->
+    <div class="container-fluid">
+        <div class="row mt-3">
+
+            <div class="col-md-6">
+                <form action="" method="post" id="transForm" name="transForm">
+
+                    <div class="card-deck mb-3">
+                        <div class="card">
+                            <div class="card-header" style="color: #248AB5;">
+                                English
+                                <!-- <input type="reset" class="btn btn-danger pt-1" name="clear" value="Clear" /> -->
+                            </div>
+                            <div class="card-body">
+                                <textarea name="inputText" id="inputText" class="form-control" placeholder="Type English words here..." rows="12"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <div class="card-deck mb-3">
+                    <div class="card">
+                        <div class="card-header" style="color: #248AB5;">Kiswahili</div>
+                        <div class="card-body">
+                            <textarea class="form-control" style="background-color: #fff;" name="outputText" id="outputText" rows="12" placeholder="Kiswahili Translations..." readonly></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--  -->
+
+    <!--Footer-->
+    <hr>
+    <div class="footer text-center" style="clear:both">
+        <p style="color: #fff;"> Copyright© &nbsp;&nbsp;English To Kiswahili SMT</p>
+
+    </div>
+
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+
+
+
+</body>
+
+</html>
