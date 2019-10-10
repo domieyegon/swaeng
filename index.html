@@ -5,15 +5,10 @@
     <title>Dyegon Translate</title>
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="style.css">
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <!-- <link href ="node_modules/bootstrap/dist/css/" rel="stylesheet" type="text/css" /> -->
-    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/cerulean/bootstrap.min.css" rel="stylesheet" integrity="sha384-C++cugH8+Uf86JbNOnQoBweHHAe/wVKN/mb0lTybu/NZ9sEYbd+BbbYtNpWYAsNP" crossorigin="anonymous">
-    <!-- <link href ="themes/styles/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />          -->
-
-
-
-
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.css">
 </head>
 
 <script language="javascript">
@@ -60,12 +55,18 @@
 
                     <div class="card-deck mb-3">
                         <div class="card">
-                            <div class="card-header" style="color: #248AB5;">
-                                English
-                                <!-- <input type="reset" class="btn btn-danger pt-1" name="clear" value="Clear" /> -->
+                            <div class="card-header" style="color: #248AB5; height: 50px;">
+                                <div class="row">
+                                    <div class="col-md-11">English</div>
+                                    <div class="col-md-1 mic text-center" style="height: 30px;">
+                                        <div id="start-record-btn" class="round-button">
+                                            <span><i class="fa fa-microphone" aria-hidden="true"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="card-body">
-                                <textarea name="inputText" id="inputText" class="form-control" placeholder="Type English words here..." rows="12"></textarea>
+                                <textarea name="inputText" id="inputText" class="form-control" placeholder="Input English words here by typing or using voice recognition..." rows="12"></textarea>
                             </div>
                         </div>
                     </div>
@@ -74,7 +75,7 @@
             <div class="col-md-6">
                 <div class="card-deck mb-3">
                     <div class="card">
-                        <div class="card-header" style="color: #248AB5;">Kiswahili</div>
+                        <div class="card-header" style="color: #248AB5; height: 50px;">Kiswahili</div>
                         <div class="card-body">
                             <textarea class="form-control" style="background-color: #fff;" name="outputText" id="outputText" rows="12" placeholder="Kiswahili Translations..." readonly></textarea>
                         </div>
@@ -82,8 +83,13 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-12 text-center">
+            <p id="recording-instructions">Press the <strong><i class="fa fa-microphone" aria-hidden="true"></i></strong> button and allow access to voice recognition.</p>
+            <p class="text-warning bg-light no-browser-support">Sorry, Your Browser Doesn't Support the Web Speech API.</p>
+        </div>
     </div>
     <!--  -->
+
 
     <!--Footer-->
     <hr>
@@ -94,11 +100,7 @@
 
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-
-
-
-
-
+    <script src="script.js"></script>
 </body>
 
 </html>

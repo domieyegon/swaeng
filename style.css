@@ -1,0 +1,24 @@
+.round-button:hover {
+    width: 30px;
+    height: 30px;
+    line-height: 10px;
+    border: none;
+    border-radius: 50%;
+    color: #fff;
+    text-decoration: none;
+    background: #659EC7;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.round-button {
+    width: 30px;
+    height: 30px;
+    line-height: 10px;
+    border: none;
+    color: #659EC7;
+    padding: 5px;
+    border-radius: 50%;
+    text-decoration: none;
+    margin-left: 5px;
+}
